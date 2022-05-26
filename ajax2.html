@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax2</title>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('member').on('submit',function(){
+                var aa=$(this).serialize();
+                $.ajax({
+                    url:"m.php",
+                    type:"post",
+                    data:aa,
+                    succes:function(result){
+                        $("#txt").text(result);
+                    }
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+    <form action="m.php" method="POST" name="member" id="member">
+        <fieldset>
+            <!-- fieldset과 leged는 같이 사용함 -->
+            <legend>회원가입</legend>
+            <p>
+                <label for="user_name">이름</label>
+                <input type="text" name="user_name" id="user_name">
+            <p>
+            <p>
+                <!-- 버튼 -->
+                <input type="submit" value="확인">
+            </p>
+        </fieldset>
+    </form>
+    <div id="txt"></div>
+
+</body>
+</html>
